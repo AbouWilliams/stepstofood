@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+    :root{
+        --accent-color: #007676;
+        --base-color: #fff;
+        --text-color: #141414;
+        --input-color:#EAF2F5;    
+    }
+    *{
+        margin:0;
+        padding:0;
+    }
+    html{
+        font-family: 'Lato', sans-serif;
+        font-size: 12pt;
+        color: var(--text-color);
+        text-align: center;
+    }
+    body{
+        min-height: 100vh;
+        background-image: url(img/background2.jpg);
+        background-size: cover;
+        background-position: right;
+        overflow: hidden;
+    }
+    .wrapper{
+        box-sizing: border-box;
+        background-color: var(--base-color);
+        height: 100vh;
+        width: max(40%, 600px);
+        padding: 10px;
+        border-radius: 0 20px 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform:capitalize;
+    }
+    form{
+        width: min(400px, 100%);
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    form > div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }    
+    form label{
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent-color);
+        fill: var(--base-color);
+        color: var(--base-color);
+        border-radius: 10px 0 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    form input{
+        box-sizing: border-box;
+        flex-grow: 1;
+        min-width: 0;
+        height: 50px;
+        padding: 1em;
+        font:inherit;
+        border-radius: 0 10px 10px 0;
+        border: 2px solid var(--input-color);
+        border-left:none ;
+        background-color: var(--input-color);
+        transition:  150ms ease;
+    }
+    form input:hover{
+        border: 2px solid var(--accent-color);
+    }
+    form input:focus{
+        outline: none;
+        border-color: var(--text-color);
+    }
+    div:has(input:focus) > label{
+        background-color: var(--text-color);
+    }
+    form input::placeholder{
+        color: var(--accent-color);
+    }
+    form button{
+        margin-top: 10px;
+        border: none;
+        border-radius: 1000px;
+        padding: .85em 4em;
+        background-color: var(--accent-color);
+        color: var(--base-color);
+        font:inherit;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    form button:hover{
+        background-color: var(--text-color);
+    }
+    form button:focus{
+        outline: none;
+        background-color: var(--accent-color);
+    }
+    a{
+        text-decoration: none;
+        color: var(--accent-color);
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    @media(max-width=1100px){
+        .wrapper{
+            width: min(600px, 100%);
+            border-radius: 0;
+        }
+    }
+    form div.incorrect label{
+        background-color: #f94449;
+    }
+    form div.incorrect input{
+        border-color: #f94449;
+    }
+    #error-message{
+        color: #f94449;
+    }
+
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* color variables */
+            --accent-color: #EAF2F5;
+            --primary-text-color: #141414;
+            --secondary-text-color: #007676;
+            --light-text-color: #fff;
+            --primary-color: #fff;
+            --secondary-color: #007676;
+            --alpha-secondary-color: rgba(0, 118, 118, 0.2);
+            --discount-color: #E71A1C;
+            --card-hover-bg-color: #F9F9F9;
+            --border-color: #f9f9f9;
+            --box-shadow-color: var(--accent-color);
+            --shadow: rgba(0, 0, 0, 0.05);
+            --box-shadow: rgba(0, 0, 0, 0.25);
+            --discount-banner-background-overlay: linear-gradient(rgba(0, 118, 118, 0.8), rgba(0, 118, 118, 0.8));
+            --phone-app-shadow: #C7E1EB;
+            --alpha-primary-color: rgba(255, 255, 255, 0.5);
+            --rating-color: #FFA800;
+        
+            /* transition curves */
+            --transition-curve: cubic-bezier(0.36, -0.21, 0.16, 1.97);
+        }
+
+        html{
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        body{
+            font-family: 'Lato', sans-serif;
+            color: var(--primary-text-color);
+            background: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        /*navbar styles*/
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            padding: 0 10vw;
+            z-index: 9;
+            background: var(--accent-color);
+        }
+
+        .nav-toggler{
+            display: none;
+        }
+
+        .logo{
+            height: 1.5rem;
+        }
+
+        .links-container{
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin-left: 7.5%;
+        }
+
+        .links{
+            color: var(--primary-text-color);
+            text-decoration: none;
+            text-transform: none;
+            padding: .5rem 1rem;
+            transition: .2s;
+        }
+
+        .links:hover{
+            color: var(--secondary-text-color);
+        }
+
+        .nav-extras{
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 1rem;
+        }
+
+        .search{
+            position: relative;
+            width: 20vw;
+            min-width: 150px;
+            height: 2.5rem;
+            border-radius: .5rem;
+            overflow: hidden;
+        }
+
+        .search-box{
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            border: none;
+            padding: 1rem;
+            outline: none;
+            font-size: .9rem;
+        }
+
+        .search-btn{
+            position: absolute;
+            border: none;
+            right: 0;
+            width: 3rem;
+            height: 100%;
+            background: var(--primary-color);
+            text-align: center;
+            cursor: pointer;
+            color: var(--secondary-text-color);
+        }
+
+        .cart, .account{
+            width: 2.5rem;
+            height: 2.5rem;
+            color: var(--secondary-text-color);
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: .5s;
+        }
+        
+        
+        .cart:hover, .locate-btn:hover, .account:hover{
+            background: var(--alpha-secondary-color);            
+        }
+
+        .cart-container {
+        position: relative;
+        display: inline-block;
+        }
+
+        #cart-text-icon {
+            position: absolute;
+            top: 120%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-color);
+            color: var(--card-hover-bg-color);
+            white-space: nowrap;
+            padding: 10px 15px;
+            border-radius: 7px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .cart-container:hover #cart-text-icon {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .account-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        #account-text-icon {
+            position: absolute;
+            top: 120%; /* Positions below the account icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-color); /* Adjust color as needed */
+            color: var(--card-hover-bg-color); /* Text color */
+            white-space: nowrap;
+            padding: 10px 15px;
+            border-radius: 7px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .account-container:hover #account-text-icon {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    
+    </style>
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar">
+    
+            <!--logo-->
+            <img src="img/logo.png" class="logo" alt="">
+            <!--ul-->
+            <ul class="links-container">
+                <li class="link-items"><a href="menu.html" class="links">Menu</a></li>
+                <li class="link-items"><a href="#" class="links">Order</a></li>
+                <li class="link-items"><a href="#" class="links">Restaurants</a></li>
+                <li class="link-items"><a href="#" class="links">Track Order</a></li>
+            </ul>
+    
+            <!--Search box-->
+            <div class="nav-extras">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="Search Today's Offerings">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <!--Cart icon-->
+                <div class="cart-container">
+                    <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <span id="cart-text-icon">Cart</span>                                
+                </div>
+                <!--Account icon-->
+                <div class="account-container">
+                    <a href ="login.html" class="account"><i class="fa-solid fa-user"></i></a>
+                    <span id="account-text-icon">Account</span>
+                </div>
+                
+                
+    
+                <!-- <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href ="login.html" class="account"><i class="fa-solid fa-user"></i></a> -->
+    
+                <div class="nav-toggler">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    
+        </nav>
+    </header>
+    <div class="wrapper">
+        <h1>Sign-Up</h1>
+        <p id="error-message"></p>
+        <form id="form">
+            <div>
+                <label for="firstname-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+                </label>                
+                <input type="text" name="firstname" id="firstname-input" placeholder="Full Name">
+            </div>
+            <div>
+                <label for="ID-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m240-160 40-160H120l20-80h160l40-160H180l20-80h160l40-160h80l-40 160h160l40-160h80l-40 160h160l-20 80H660l-40 160h160l-20 80H600l-40 160h-80l40-160H360l-40 160h-80Zm140-240h160l40-160H420l-40 160Z"/></svg>
+                </label>                
+                <input type="text" name="ID" id="ID-input" placeholder="ID Number">
+            </div>
+            <div>
+                <label for="email-input">
+                    <span>@</span>
+                </label>                
+                <input type="email" name="email" id="email-input" placeholder="Email">
+            </div>
+            <div>
+                <label for="password-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>
+                </label>                
+                <input type="password" name="password" id="password-input" placeholder="Password">
+            </div>
+            <div>
+                <label for="repeat-password-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="undefined"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>
+                </label>                  
+                <input type="password" name="repeat-password" id="repeat-password-input" placeholder="Repeat Password">
+            </div>            
+            <button type="submit">Signup</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+        <button>Sign in with google</button>
+        <!-- <button>Sign In with google</button> -->
+        <p><a href="index.html">Back to homepage</a></p>
+    </div>
+
+    <!--javascript-->
+    <script type="text/javascript" defer>
+        document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('form');
+        const firstname_input = document.getElementById('firstname-input');
+        const ID_Number_input = document.getElementById('ID-input');
+        const email_input = document.getElementById('email-input');
+        const password_input = document.getElementById('password-input');
+        const repeat_password_input = document.getElementById('repeat-password-input');
+        const error_message = document.getElementById('error-message');
+
+        // Validation function for email
+        function validateEmail(email) {
+            const regex = /^[a-zA-Z0-9._%+-]+@(stu\.)?ncu\.edu\.jm$/;
+            return regex.test(email);
+        }
+
+        // Main function to check for errors in the signup form
+        function getSignupFormErrors(firstname, email, password, repeatPassword, ID) {
+            let errors = [];
+
+            if (firstname === '' || firstname == null) {
+                errors.push('Firstname is required');
+                firstname_input.parentElement.classList.add('incorrect');
+            }
+            if (ID === '' || ID == null) {
+                errors.push('ID is required');
+                ID_Number_input.parentElement.classList.add('incorrect');
+            }
+            if (ID.length < 8) {
+                errors.push('ID must have at least 8 characters');
+                ID_Number_input.parentElement.classList.add('incorrect');
+            }
+            if (email === '' || email == null) {
+                errors.push('Email is required');
+                email_input.parentElement.classList.add('incorrect');
+            } else if (!validateEmail(email)) {
+                errors.push('Invalid NCU email format (should be @ncu.edu.jm or @stu.ncu.edu.jm)');
+                email_input.parentElement.classList.add('incorrect');
+            }
+            if (password === '' || password == null) {
+                errors.push('Password is required');
+                password_input.parentElement.classList.add('incorrect');
+            }
+            if (password.length < 8) {
+                errors.push('Password must have at least 8 characters');
+                password_input.parentElement.classList.add('incorrect');
+            }
+            if (password !== repeatPassword) {
+                errors.push('Password does not match repeated password');
+                password_input.parentElement.classList.add('incorrect');
+                repeat_password_input.parentElement.classList.add('incorrect');
+            }
+
+            return errors;
+        }
+
+        // Add event listener for form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();  // Prevent default submission
+            let errors = getSignupFormErrors(
+                firstname_input.value,
+                email_input.value,
+                password_input.value,
+                repeat_password_input.value,
+                ID_Number_input.value
+            );
+
+            // Display errors if there are any
+            if (errors.length > 0) {
+                error_message.innerText = errors.join(". ");
+            } else {
+                form.submit();  // Only submit if there are no errors
+            }
+        });
+
+        // Reset error styling on input
+        const allInputs = [firstname_input, email_input, password_input, repeat_password_input, ID_Number_input];
+        allInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.parentElement.classList.contains('incorrect')) {
+                    input.parentElement.classList.remove('incorrect');
+                    error_message.innerText = '';  // Clear error message
+                }
+            });
+        });
+    });
+
+
+    </script>
+    
+   
+</body>
+
+</html>
